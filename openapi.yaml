@@ -1,0 +1,1533 @@
+openapi: "3.0.0"
+info:
+  title: Hello Service
+  version: 1.0.0
+paths:
+  /:
+    get:
+      description: Hello World
+      tags:
+        - hello
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/plain:
+              schema:
+                type: string
+      deprecated: false
+      security: []
+  /settings:
+    get:
+      summary: Get Settings
+      description: Retrieve settings data.
+      parameters:
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language code for the settings.
+          required: true
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                some_parameter:
+                  type: string
+                  description: Description of the parameter.
+      responses: { }
+  /me:
+    get:
+      summary: Get User Profile
+      description: Retrieve user profile data.
+      responses: { }
+  /withdraws:
+    get:
+      summary: Get Withdraws
+      description: Retrieve withdraws data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of withdraws to retrieve.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /orders:
+    get:
+      summary: Get Orders
+      description: Retrieve orders data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the orders.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of orders to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /analytics:
+    get:
+      summary: Get Analytics Data
+      description: Retrieve analytics data.
+      responses:
+        '200':
+          description: Successful response
+  /popular-products:
+    get:
+      summary: Get Popular Products
+      description: Retrieve popular products data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Additional filter criteria.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of popular products to retrieve.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /top-rate-product:
+    get:
+      summary: Get Top Rated Products
+      description: Retrieve top rated products data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of top rated products to retrieve.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /low-stock-products:
+    get:
+      summary: Get Low Stock Products
+      description: Retrieve low stock products data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Additional filter criteria.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of low stock products to retrieve.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /category-wise-product:
+    get:
+      summary: Get Category-wise Products
+      description: Retrieve category-wise products data.
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of products to retrieve.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products.
+      responses:
+        '200':
+          description: Successful response
+  /types/{type}:
+    get:
+      summary: Get {Type} Types
+      description: Retrieve {type} types data.
+      parameters:
+        - in: path
+          name: type
+          schema:
+            type: string
+          description: Type of products to retrieve.
+          required: true
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the types.
+      responses:
+        '200':
+          description: Successful response
+  /token:
+    post:
+      summary: Get Token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: dozemode.cloud@gmail.com
+                password:
+                  type: string
+                  example: opklopkl
+      responses:
+        '200':
+          description: Successful response
+  /shops:
+    get:
+      summary: Get Shops
+      description: Retrieve shops data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of shops to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /new-shops:
+    get:
+      summary: Get New Shops
+      description: Retrieve new shops data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: is_active
+          schema:
+            type: boolean
+          description: Flag indicating if the shop is active.
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Name of the shop.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of shops to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /products:
+    get:
+      summary: Get Products
+      description: Retrieve products data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Additional filter criteria.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of products to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /draft-products:
+    get:
+      summary: Get Draft Products
+      description: Retrieve draft products data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+            minimum: 1
+          description: User ID associated with the draft products.
+        - in: query
+          name: status
+          schema:
+            type: string
+          description: Status of the draft products.
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Name of the draft products.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of draft products to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the draft products.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /products-stock:
+    get:
+      summary: Get Products Stock
+      description: Retrieve products stock data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Name of the product.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the products stock.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of products stock to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /categories:
+    get:
+      summary: Get Categories
+      description: Retrieve categories data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of categories to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the categories.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /tags:
+    get:
+      summary: Get Tags
+      description: Retrieve tags data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of tags to retrieve.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the tags.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /attributes:
+    get:
+      summary: Get Attributes
+      description: Retrieve attributes data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the attributes.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /manufacturers:
+    get:
+      summary: Get Manufacturers
+      description: Retrieve manufacturers data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of manufacturers to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the manufacturers.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /authors:
+    get:
+      summary: Get Authors
+      description: Retrieve authors data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of authors to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the authors.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /types:
+    get:
+      summary: Get Types
+      description: Retrieve types data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the types.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /taxes:
+    get:
+      summary: Get Taxes
+      description: Retrieve taxes data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /shippings:
+    get:
+      summary: Get Shippings
+      description: Retrieve shippings data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /refund-reasons:
+    get:
+      summary: Get Refund Reasons
+      description: Retrieve refund reasons data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the refund reasons.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /refund-policies:
+    get:
+      summary: Get Refund Policies
+      description: Retrieve refund policies data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of refund policies to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the refund policies.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /faqs:
+    get:
+      summary: Get FAQs
+      description: Retrieve FAQs data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the FAQs.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of FAQs to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /terms-and-conditions:
+    get:
+      summary: Get Terms and Conditions
+      description: Retrieve terms and conditions data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the terms and conditions.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of terms and conditions to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /users:
+    get:
+      summary: Get Users
+      description: Retrieve users data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of users to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /admin/list:
+    get:
+      summary: Get Admin List
+      description: Retrieve admin list data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of admins to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Name of the admin to search for.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+      responses:
+        '200':
+          description: Successful response
+  /my-staffs:
+    get:
+      summary: Get My Staffs
+      description: Retrieve my staffs data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of staffs to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /all-staffs:
+    get:
+      summary: Get All Staffs
+      description: Retrieve all staffs data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of staffs to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /reviews:
+    get:
+      summary: Get Reviews
+      description: Retrieve reviews data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of reviews to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /questions:
+    get:
+      summary: Get Questions
+      description: Retrieve questions data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of questions to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: answer
+          schema:
+            type: string
+          description: Filter questions by answer status.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /coupons:
+    get:
+      summary: Get Coupons
+      description: Retrieve coupons data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the coupons.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of coupons to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /flash-sale:
+    get:
+      summary: Get Flash Sale
+      description: Retrieve flash sale data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the flash sale.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of flash sale items to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /conversations:
+    get:
+      summary: Get Conversations
+      description: Retrieve conversations data.
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of conversations to retrieve.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+      responses:
+        '200':
+          description: Successful response
+  /store-notices:
+    get:
+      summary: Get Store Notices
+      description: Retrieve store notices data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: language
+          schema:
+            type: string
+          description: Language for the store notices.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of store notices to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /refunds:
+    get:
+      summary: Get Refunds
+      description: Retrieve refunds data.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of refunds to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+      responses:
+        '200':
+          description: Successful response
+  /vendors/list:
+    get:
+      summary: Get Vendor List
+      description: Retrieve list of vendors.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: is_active
+          schema:
+            type: boolean
+          description: Filter vendors by active status.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of vendors to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: name
+          schema:
+            type: string
+          description: Search by vendor name.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+      responses:
+        '200':
+          description: Successful response
+  /customers/list:
+    get:
+      summary: Get Customer List
+      description: Retrieve list of customers.
+      parameters:
+        - in: query
+          name: searchJoin
+          schema:
+            type: string
+          description: Type of search join.
+        - in: query
+          name: with
+          schema:
+            type: string
+          description: Include related entities.
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+          description: Limit of customers to retrieve.
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+          description: Page number for pagination.
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Search query.
+        - in: query
+          name: orderBy
+          schema:
+            type: string
+          description: Field to order by.
+        - in: query
+          name: sortedBy
+          schema:
+            type: string
+          description: Sorting order.
+      responses:
+        '200':
+          description: Successful response
+
+
