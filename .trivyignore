@@ -1,0 +1,5 @@
+# This CVE is ignored because it will be fixed in the next release
+CVE-2023-xxxx
+
+# This CVE is not relevant to our application
+CVE-2023-yyyy

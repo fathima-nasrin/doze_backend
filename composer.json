@@ -72,7 +72,6 @@
         ],
         "post-install-cmd": [
             "php artisan key:generate",
-            "php artisan marvel:install",
             "php artisan storage:link"
         ]
     },
