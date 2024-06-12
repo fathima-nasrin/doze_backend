@@ -1,6 +1,6 @@
 version: 0.1
 endpoints:
-  - name: Doze Service 1
+  - name: Doze Service
     port: 8000
     type: REST
     networkVisibility: Public
